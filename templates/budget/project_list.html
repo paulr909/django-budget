@@ -1,0 +1,33 @@
+{% extends 'budget/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <a href="{% url 'add' %}" class="btn-small grey">
+                    <i class="material-icons right">add_circle_outline</i>
+                    <span class="bold">Add Project</span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            {% for project in project_list %}
+                <div class="col s4">
+                    <div class="card-panel">
+                        <h5>{{ project.name }}</h5>
+                        <a href="{% url 'detail' project.slug %}" class="btn grey">Open
+                            <i class="material-icons right">open_with</i></a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="noproject-wrapper center">
+                    <h3 class="grey-text">No projects listed</h3>
+                    <a href="{% url 'add' %}" class="btn-small grey">
+                        <i class="material-icons right">add_circle_outline</i>
+                        <span class="bold">Add Project</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
