@@ -4,9 +4,7 @@
         if (e.keyCode !== 13) {
             return;
         }
-
         e.preventDefault();
-
         let categoryName = this.value;
         this.value = '';
         addNewCategory(categoryName);
@@ -14,8 +12,6 @@
     });
 
     function addNewCategory(name) {
-
-
         document.querySelector('#categoriesContainer').insertAdjacentHTML('beforeend',
             `<li class="category"><span class="name">${name}</span><span onclick="removeCategory(this)" 
             class="btnRemove bold">&nbsp<i class="material-icons red-text right">delete_forever</i></span></li>`)
@@ -24,14 +20,11 @@
 
 function fetchCategoryArray() {
     let categories = [];
-
     document.querySelectorAll('.category').forEach(function (e) {
         const name = e.querySelector('.name').innerHTML;
         if (name === '') return;
-
         categories.push(name)
     });
-
     return categories
 }
 
